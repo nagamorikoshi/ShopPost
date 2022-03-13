@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_09_005231) do
+ActiveRecord::Schema.define(version: 2022_03_12_013512) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_005231) do
   end
 
   create_table "admins", force: :cascade do |t|
+    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_03_09_005231) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -68,6 +70,16 @@ ActiveRecord::Schema.define(version: 2022_03_09_005231) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shop_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "customers_id"
+    t.integer "shop_images_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customers_id"], name: "index_shop_comments_on_customers_id"
+    t.index ["shop_images_id"], name: "index_shop_comments_on_shop_images_id"
   end
 
   create_table "shop_images", force: :cascade do |t|

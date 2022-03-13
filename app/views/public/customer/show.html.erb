@@ -1,2 +1,23 @@
-<h1>Public::Customer#show</h1>
-<p>Find me in app/views/public/customer/show.html.erb</p>
+<!-- ユーザーの詳細 -->
+<div>
+  <h3><%= @customer.name %></h3>
+  <%= image_tag @customer.get_profile_image(100,100) %>
+  <% if @customer == current.customer %>
+    <p><%= link_to "プロフィール編集", edit_public_customer_path(@customer) %></p>
+  <% end %>
+</div>
+
+<!-- ユーザーの投稿一覧 -->
+
+<% @shop_images.each do |shop_image| %>
+<div>
+  <%= link_to public_shop_images_path(shop_image.id) do %>
+    <%= image_tag shop_image.get_image %>
+  <% end %>
+  <p>投稿ユーザー画像：<%= image_tag shop_image.customer.get_profile_image(100,100) %></p>
+  <p>ショップ名：<%= shop_image.shop_name %></p>
+  <p>説明：<%= shop_image.caption %></p>
+  <p>ユーザーネーム：<%= shop_image.customer.name %></p>
+  <p><%= link_to "#{shop_image.shop_comments.count} コメント", public_shop_image_path(shop_image.id) %></p>
+</div>
+<% end %>
