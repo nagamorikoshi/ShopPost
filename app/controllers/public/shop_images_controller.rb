@@ -5,7 +5,7 @@ class Public::ShopImagesController < ApplicationController
 
   def create
     @shop_image = ShopImage.new(shop_image_params)
-    @shop_image.customerid = current_customer.id
+    @shop_image.customers_id = current_customer.id
     if @shop_image.save
       redirect_to public_shop_images_path
     else
@@ -14,7 +14,7 @@ class Public::ShopImagesController < ApplicationController
   end
 
   def index
-    @shop_images = ShopImage.all
+    @shop_images = ShopImage.page(params[:page])
   end
 
   def show

@@ -1,7 +1,7 @@
 class Public::CustomerController < ApplicationController
   def show
     @customer = Csutomer.find(params[:id])
-    @shop_images = @customer.shop_images
+    @hsop_images = @customer.shop_images.page(params[:page])
   end
 
   def edit

@@ -8,6 +8,19 @@
   <% if @shop_image.customer == current_customer %>
     <%= link_to "削除", public_shop_image_path(@shop_image), method: :delete %>
   <% end %>
+  <% if @shop_image.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to public_shop_image_favorites_path(@shop_image), method: :delete do %>
+        ♥<%= @shop_image.favorites.count %>いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to public_shop_image_favorites_path(@shop_image), method: :post do %>
+        ♡<%= @shop_image.favorites.count %>いいね
+      <% end %>
+    </p>
+  <% end %>
 </div>
 
 <div>
@@ -16,11 +29,12 @@
     <p><%= image_tag shop_comment.customer.get_profile_image(100,100) %></p>
     <%= shop_comment.customer.name %>
     <%= shop_comment.created_at.strftime('%Y/%m/%d') %><%= shop_comment.comment %>
-    <% if post_comment.user == current_user %>
-      <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+    <% if shop_comment.customer == current_customer %>
+      <%= link_to "削除", public_shop_image_shop_comment_path(shop_comment.shop_image, shop_comment), method: :delete %>
     <% end %>
   <% end %>
 </div>
+
 <div>
   <%= form_with model: [@shop_image, @shop_comment] do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>

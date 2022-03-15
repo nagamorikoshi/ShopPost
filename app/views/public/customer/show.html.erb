@@ -21,3 +21,4 @@
   <p><%= link_to "#{shop_image.shop_comments.count} コメント", public_shop_image_path(shop_image.id) %></p>
 </div>
 <% end %>
+<%= paginate @shop_images %>

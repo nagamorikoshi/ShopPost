@@ -2,6 +2,10 @@ class ShopImage < ApplicationRecord
   has_one_attached :image
   belongs_to :customer
   has_many :shop_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  
+  validates :name, presence: true
+  validates :image, presence: true
   
   def get_image
     unless image.attached?
@@ -9,6 +13,9 @@ class ShopImage < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image
-  end 
-
+  end
+  
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
 end
