@@ -67,12 +67,12 @@ ActiveRecord::Schema.define(version: 2022_03_14_035611) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "customers_id"
-    t.integer "shop_images_id"
+    t.integer "customer_id"
+    t.integer "shop_image_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customers_id"], name: "index_favorites_on_customers_id"
-    t.index ["shop_images_id"], name: "index_favorites_on_shop_images_id"
+    t.index ["customer_id"], name: "index_favorites_on_customer_id"
+    t.index ["shop_image_id"], name: "index_favorites_on_shop_image_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -83,21 +83,21 @@ ActiveRecord::Schema.define(version: 2022_03_14_035611) do
 
   create_table "shop_comments", force: :cascade do |t|
     t.text "comment"
-    t.integer "customers_id"
-    t.integer "shop_images_id"
+    t.integer "customer_id"
+    t.integer "shop_image_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customers_id"], name: "index_shop_comments_on_customers_id"
-    t.index ["shop_images_id"], name: "index_shop_comments_on_shop_images_id"
+    t.index ["customer_id"], name: "index_shop_comments_on_customer_id"
+    t.index ["shop_image_id"], name: "index_shop_comments_on_shop_image_id"
   end
 
   create_table "shop_images", force: :cascade do |t|
     t.string "name"
     t.text "caption"
-    t.integer "customers_id"
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customers_id"], name: "index_shop_images_on_customers_id"
+    t.index ["customer_id"], name: "index_shop_images_on_customer_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

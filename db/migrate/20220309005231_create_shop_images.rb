@@ -3,7 +3,7 @@ class CreateShopImages < ActiveRecord::Migration[6.1]
     create_table :shop_images do |t|
       t.string :name
       t.text :caption
-      t.references :customers
+      t.references :customer
 
       t.timestamps
     end
