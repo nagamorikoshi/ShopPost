@@ -31,12 +31,25 @@
               <li class = "nav-item"  type="button" >
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-primary" %>
               </li>
-            <% else %>
-              <li class = "nav-item" type="button" >
-                <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-primary" %>
+            <% elsif admin_signed_in? %>
+              <li class = "nav-item" type="button">
+                <%= link_to 'ジャンル一覧', admin_genres_path, class:"btn btn-outline-primary" %>
               </li>
               <li class = "nav-item"  type="button" >
+                  <%= link_to '投稿一覧', public_shop_images_path, class:"btn btn-outline-primary" %>
+              </li>
+              <li class = "nav-item"  type="button" >
+                  <%= link_to '会員一覧', public_customers_path, class:"btn btn-outline-primary" %>
+              </li>
+              <li>
+                <%= button_to "ログアウト", destroy_admin_session_path, method: :delete , class:"btn btn-outline-primary" %>
+              </li>
+            <% else %>
+              <li class = "nav-item"  type="button" >
                 <%= link_to '投稿一覧', public_shop_images_path, class:"btn btn-outline-primary" %>
+              </li>
+              <li class = "nav-item" type="button" >
+                <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-primary" %>
               </li>
               <li class = "nav-item"  type="button" >
                 <%= link_to "ログイン", new_customer_session_path, class:"btn btn-outline-primary" %>

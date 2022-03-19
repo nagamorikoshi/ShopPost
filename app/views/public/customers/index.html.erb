@@ -1,0 +1,23 @@
+<div class="title-logo-admin"><h3 class="title-admin">会員一覧</h3></div>
+
+
+  <table>
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= link_to customer.name, public_customer_path(customer.id) %></td>
+              <td><%= customer.email %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+</div>

@@ -41,6 +41,6 @@ class Public::ShopImagesController < ApplicationController
   private
 
   def shop_image_params
-    params.require(:shop_image).permit(:name, :caption)
+    params.require(:shop_image).permit(:name, :caption, :image)
   end
 end

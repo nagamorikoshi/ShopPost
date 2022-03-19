@@ -1,13 +1,18 @@
-class Public::CustomerController < ApplicationController
+class Public::CustomersController < ApplicationController
+
+  def index
+    @customers = Customer.all
+  end
+
   def show
-    @customer = Csutomer.find(params[:id])
+    @customer = Customer.find(params[:id])
     @hsop_images = @customer.shop_images.page(params[:page])
   end
 
   def edit
-    @customer = Csutomer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
-  
+
   def update
     @customer = Customer.find(params[:id])
     @customer.update
@@ -18,6 +23,6 @@ class Public::CustomerController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :profile_image)
+    params.require(:customer).permit(:name, :profile_image, :email)
   end
 end

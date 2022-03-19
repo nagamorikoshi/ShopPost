@@ -1,6 +1,6 @@
 class ShopImage < ApplicationRecord
   has_one_attached :image
-  belongs_to :customer
+  belongs_to :customer, optional: true
   has_many :shop_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
