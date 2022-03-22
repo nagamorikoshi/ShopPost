@@ -1,23 +1,27 @@
-<div class="title-logo-admin"><h3 class="title-admin">会員一覧</h3></div>
+<div class = "card-list-container py-5">
+  <div class = "card w-50 mx-auto mt-4 shadow-lg">
+    <div class = "card-body">
+      <div class = "row">
+        <table>
+            <thead>
+              <tr>
+                <th>会員ID</th>
+                <th>氏名</th>
+                <th>メールアドレス</th>
+              </tr>
+          </thead>
 
-
-  <table>
-      <thead>
-        <tr>
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-        </tr>
-      </thead>
-
-      <tbody>
-          <% @customers.each do |customer| %>
-            <tr>
-              <td><%= customer.id %></td>
-              <td><%= link_to customer.name, public_customer_path(customer.id) %></td>
-              <td><%= customer.email %></td>
-            </tr>
-          <% end %>
-      </tbody>
-    </table>
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                <td><%= customer.id %></td>
+                <td><%= link_to customer.name, public_customer_path(customer.id) %></td>
+                <td><%= customer.email %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

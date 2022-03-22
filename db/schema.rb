@@ -75,12 +75,6 @@ ActiveRecord::Schema.define(version: 2022_03_14_035611) do
     t.index ["shop_image_id"], name: "index_favorites_on_shop_image_id"
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "shop_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "customer_id"
