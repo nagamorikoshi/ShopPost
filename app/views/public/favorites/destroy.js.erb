@@ -1,0 +1,3 @@
+console.log("shop_image:<%= @shop_image.inspect %>");
+console.log("favorite_buttons_<%= @shop_image.id %>");
+$('#favorite_buttons_<%= @shop_image.id %>').html("<%= j(render "public/favorites/favorite", shop_image: @shop_image) %>");

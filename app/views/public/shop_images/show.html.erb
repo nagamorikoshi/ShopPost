@@ -11,20 +11,10 @@
             <% if @shop_image.customer == current_customer %>
               <%= link_to "削除", public_shop_image_path(@shop_image), method: :delete, class:"btn btn-danger" %>
           <% end %>
-          <% if @shop_image.favorited_by?(current_customer) %>
-            <p>
-              <%= link_to public_shop_image_favorite_path(@shop_image), method: :delete do %>
-                ♥<%= @shop_image.favorites.count %>いいね
-              <% end %>
-            </p>
-          <% else %>
-            <p>
-              <%= link_to public_shop_image_favorite_path(@shop_image), method: :post do %>
-                ♡<%= @shop_image.favorites.count %>いいね
-              <% end %>
-            </p>
-          <% end %>
-        
+          <p id="favorite_buttons_<%= @shop_image.id %>">
+            <%= render 'public/favorites/favorite', shop_image: @shop_image %>
+          </p>
+
           <p>コメント件数：<%= @shop_image.shop_comments.count %></p>
           <% @shop_image.shop_comments.each do |shop_comment| %>
             <%= shop_comment.customer.name %>
@@ -33,7 +23,7 @@
               <%= link_to "削除", public_shop_image_shop_comment_path(shop_image_id: shop_comment.shop_image.id, shop_comment_id: shop_comment.id), method: :delete %>
             <% end %>
           <% end %>
-        
+
           <%= form_with model: [@shop_image, @shop_comment], url: public_shop_image_shop_comments_path(@shop_image.id) do |f| %>
             <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
             <%= f.submit "送信する" %>
