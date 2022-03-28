@@ -1,0 +1,4 @@
+<%= form_with model: [shop_image, shop_comment], url: public_shop_image_shop_comments_path(shop_image.id), local: true do |f| %>
+  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>

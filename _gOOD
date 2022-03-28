@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ec2-user/environment/shoppost/app/views/public/shop_images/show.html.erb:24 #<Class:0x00007f00a47b3030>#_app_views_public_shop_images_show_html_erb___1014663187142109095_69820263979260:
+
+    [1;34m19[0m:             <%= render 'public/shop_comments/comment', shop_image: @shop_image %>
+    [1;34m20[0m:           </div>
+    [1;34m21[0m: 
+    [1;34m22[0m:           <div class="new-comment">
+    [1;34m23[0m:             <% binding.pry %>
+ => [1;34m24[0m:             <%= render 'public/shop_comments/form', shop_image: @shop_image, shop_comment: @shop_comment %>
+    [1;34m25[0m:           </div>
+    [1;34m26[0m: 
+    [1;34m27[0m:         </div>
+    [1;34m28[0m:       </div>
+    [1;34m29[0m:     </div>
+

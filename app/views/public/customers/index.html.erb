@@ -17,6 +17,11 @@
                 <td><%= customer.id %></td>
                 <td><%= link_to customer.name, public_customer_path(customer.id) %></td>
                 <td><%= customer.email %></td>
+                <td>
+                  <% if admin_signed_in? %>
+                    <%= link_to "削除", public_customer_path(customer.id), method: :delete, class:"btn btn-danger" %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>

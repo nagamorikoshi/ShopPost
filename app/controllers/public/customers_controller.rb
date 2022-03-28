@@ -19,6 +19,11 @@ class Public::CustomersController < ApplicationController
     redirect_to public_shop_image_path(customer_params)
   end
 
+  def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    redirect_to public_customers_path
+  end
 
   private
 
